@@ -7,14 +7,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div id="countdown-box">
-            <div id="countdown">00 : 00 : 00</div>
-            <button id="enter-button">Enter</button>
-        </div>
+    <div class="countdown-box">
+        <h1 id="countdown">00 : 00 : 00</h1>
+        <button id="enterBtn" disabled onclick="window.location.href='snoopy.html'">Enter</button>
     </div>
 
-    <script src="script.js"></script>
     <script>
-        // Set London target time
-        const tar
+        const countdownEl = document.getElementById('countdown');
+        const enterBtn = document.getElementById('enterBtn');
+
+        // Target time: 25th October 2025, 00:00 London time
+        const targetTime = new Date("2025-10-25T00:00:00+01:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            let diff = targetTime - now;
+
+            if (diff <= 0) {
+                countdownEl.innerHTML = "00 : 00 : 00";
+                enterBtn.disabled = false; // ENABLE button at the exact millisecond
+                return;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            countdownEl.innerHTML = 
+                String(hours).padStart(2,'0') + " : " + 
+                String(minutes).padStart(2,'0') + " : " + 
+                String(seconds).padStart(2,'0');
+        }
+
+        // Initial call
+        updateCountdown();
+
+        // Update every 100ms for smoother countdown and millisecond accuracy
+        setInterval(updateCountdown, 100);
+    </script>
+</body>
+</html>

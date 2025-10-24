@@ -1,22 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rufiarufia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rufiarufia</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Futura:wght@500&display=swap');
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Futura', sans-serif;
+      color: white;
+      background: linear-gradient(-45deg, #4b0082, #6a0dad, #9b30ff, #8a2be2);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    }
+
+    img {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: translateX(-50%) scale(1.1);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="center-text">Click on Snoopy</div>
-        <img src="snoopy.jpg" alt="Snoopy" class="snoopy-img" id="snoopy">
-    </div>
+  <h1>Click on Snoopy</h1>
+  <img src="snoopy.jpg" alt="Snoopy" onclick="goToBirthday()">
 
-    <script>
-        const snoopy = document.getElementById("snoopy");
-        snoopy.addEventListener("click", () => {
-            window.location.href = "final.html";
-        });
-    </script>
+  <script>
+    function goToBirthday() {
+      document.body.style.transition = "opacity 1s ease";
+      document.body.style.opacity = "0";
+      setTimeout(() => window.location.href = 'birthday.html', 1000);
+    }
+  </script>
 </body>
 </html>

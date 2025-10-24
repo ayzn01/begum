@@ -1,101 +1,60 @@
-/* Basic resets */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Futura', sans-serif;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
-}
-
-/* Blurred purple animated background for index + snoopy page */
+/* Background animation */
 body {
-    background: linear-gradient(270deg, #6a0dad, #9b30ff, #4b0082);
+    margin: 0;
+    height: 100vh;
+    font-family: 'Futura', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #6a0dad, #a020f0, #8a2be2);
     background-size: 600% 600%;
     animation: gradientBG 15s ease infinite;
 }
 
 @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 /* Countdown box */
-#countdown-box {
-    background: rgba(255,255,255,0.05);
-    padding: 30px 40px;
-    border-radius: 20px;
+.countdown-box {
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
+    padding: 40px 60px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 #countdown {
-    font-size: 3em;
-    color: #fff;
+    font-size: 3rem;
     margin-bottom: 20px;
+    color: white;
 }
 
-/* Button */
 button {
-    padding: 12px 25px;
-    font-size: 1.5em;
-    cursor: pointer;
-    border-radius: 10px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
     border: none;
-    background: #fff;
-    color: #6a0dad;
-    font-weight: bold;
-}
-
-/* Snoopy page */
-.snoopy-img {
-    width: 150px;
-    position: absolute;
-    bottom: 20px;
+    border-radius: 10px;
     cursor: pointer;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    transition: all 0.2s ease;
 }
 
-.center-text {
-    font-size: 2.5em;
-    color: #fff;
-    margin-bottom: 50px;
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-/* Final page style */
-.final-bg {
-    background: linear-gradient(270deg, #06402B, #046A4B, #0A2D1D);
-    background-size: 600% 600%;
-    animation: gradientBG 15s ease infinite;
-}
-
-.top-text {
-    font-size: 1.5em;
-    color: #fff;
-    margin-bottom: 50px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
-}
-
-#centerText {
-    font-size: 3em;
-    color: #fff;
-    opacity: 0;
-    transition: opacity 0.5s ease-in;
+button:hover:enabled {
+    background-color: rgba(255,255,255,0.4);
 }

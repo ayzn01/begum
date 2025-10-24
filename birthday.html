@@ -1,22 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rufiarufia</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="final-bg">
-    <div class="container">
-        <div class="top-text" id="topText">yes i only coded this just so i win think smarter not harder</div>
-        <div class="center-text" id="centerText">Happy Birthday</div>
-    </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rufiarufia</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Futura:wght@500&display=swap');
 
-    <script>
-        window.onload = () => {
-            document.getElementById("topText").style.opacity = "1";
-            document.getElementById("centerText").style.opacity = "1";
-        };
-    </script>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Futura', sans-serif;
+      color: white;
+      background: linear-gradient(-45deg, #06402B, #0B5C3F, #06402B, #0B5C3F);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 4rem;
+      text-shadow: 0 0 20px rgba(255,255,255,0.2);
+      text-align: center;
+      margin: 0;
+      opacity: 0;
+      animation: fadeInFast 0.5s ease forwards;
+      animation-delay: 0.3s; /* slight delay after top text */
+    }
+
+    h2 {
+      position: absolute;
+      top: 40px;
+      text-align: center;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+      text-transform: lowercase;
+      opacity: 0;
+      animation: fadeInFast 0.5s ease forwards;
+      animation-delay: 0s; /* fade in immediately */
+    }
+
+    @keyframes fadeInFast {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.8rem;
+        padding: 0 20px;
+      }
+      h2 {
+        font-size: 1rem;
+        top: 30px;
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>yes i only coded this just so i win think smarter not harder</h2>
+  <h1>happy birthday</h1>
 </body>
 </html>
