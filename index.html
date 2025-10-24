@@ -9,7 +9,7 @@
 <body>
     <div class="countdown-box">
         <h1 id="countdown">00 : 00 : 00</h1>
-        <button id="enterBtn" disabled onclick="window.location.href='snoopy.html'">Enter</button>
+        <button id="enterBtn" disabled>Enter</button>
     </div>
 
     <script>
@@ -25,7 +25,17 @@
 
             if (diff <= 0) {
                 countdownEl.innerHTML = "00 : 00 : 00";
-                enterBtn.disabled = false; // ENABLE button at the exact millisecond
+
+                if (enterBtn.disabled) {
+                    enterBtn.disabled = false; // Enable button at exact millisecond
+
+                    // Smooth fade-out transition and auto-redirect
+                    document.body.style.transition = "opacity 1s ease";
+                    document.body.style.opacity = "0";
+                    setTimeout(() => {
+                        window.location.href = 'snoopy.html';
+                    }, 1000); // wait 1s for fade
+                }
                 return;
             }
 
@@ -33,17 +43,21 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            countdownEl.innerHTML = 
-                String(hours).padStart(2,'0') + " : " + 
-                String(minutes).padStart(2,'0') + " : " + 
+            countdownEl.innerHTML =
+                String(hours).padStart(2,'0') + " : " +
+                String(minutes).padStart(2,'0') + " : " +
                 String(seconds).padStart(2,'0');
         }
 
         // Initial call
         updateCountdown();
-
-        // Update every 100ms for smoother countdown and millisecond accuracy
+        // Update every 100ms for smooth, accurate countdown
         setInterval(updateCountdown, 100);
+
+        // Optional: allow manual click after countdown (not necessary, auto-redirect handles it)
+        enterBtn.addEventListener('click', () => {
+            window.location.href = 'snoopy.html';
+        });
     </script>
 </body>
 </html>
