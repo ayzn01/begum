@@ -6,21 +6,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(270deg, #6a0dad, #a020f0, #8a2be2);
-    background-size: 600% 600%;
-    animation: gradientBG 15s ease infinite;
+    background: linear-gradient(270deg, #6a0dad, #a020f0, #8a2be2, #9b30ff);
+    background-size: 800% 800%; /* make the movement more pronounced */
+    animation: gradientBG 12s ease infinite; /* slightly faster for visible motion */
+    overflow: hidden;
 }
 
+/* Make sure mobile starts zoomed out correctly */
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Gradient animation */
 @keyframes gradientBG {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Countdown box */
 .countdown-box {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15); /* less blur, more see-through */
+    backdrop-filter: blur(10px); /* reduced blur */
     padding: 40px 60px;
     border-radius: 20px;
     display: flex;
@@ -30,22 +40,25 @@ body {
     text-align: center;
     max-width: 400px;
     width: 90%;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    transition: transform 0.5s ease; /* optional smooth zoom */
 }
 
+/* Countdown text */
 #countdown {
     font-size: 3rem;
     margin-bottom: 20px;
     color: white;
 }
 
+/* Button styling */
 button {
     padding: 12px 30px;
     font-size: 1.2rem;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.25);
     color: white;
     transition: all 0.2s ease;
 }
@@ -56,5 +69,22 @@ button:disabled {
 }
 
 button:hover:enabled {
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.45);
+}
+
+/* Responsive tweaks for phones */
+@media (max-width: 600px) {
+    .countdown-box {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+
+    #countdown {
+        font-size: 2.5rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
 }
