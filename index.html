@@ -27,7 +27,8 @@
                 countdownEl.innerHTML = "00 : 00 : 00";
 
                 if (enterBtn.disabled) {
-                    enterBtn.disabled = false; // Enable button
+                    enterBtn.disabled = false; // Enable button at exact millisecond
+
                     // Smooth fade-out transition and auto-redirect
                     document.body.style.transition = "opacity 1s ease";
                     document.body.style.opacity = "0";
@@ -54,9 +55,11 @@
         // Update every 100ms for smooth, accurate countdown
         setInterval(updateCountdown, 100);
 
-        // Optional: allow manual click after countdown (not necessary, auto-redirect handles it)
+        // Ensure button is disabled until countdown hits zero
         enterBtn.addEventListener('click', () => {
-            window.location.href = 'snoopy.html';
+            if (!enterBtn.disabled) {
+                window.location.href = 'snoopy.html';
+            }
         });
     </script>
 </body>
