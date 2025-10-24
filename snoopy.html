@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rufiarufia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="center-text">Click on Snoopy</div>
+        <img src="snoopy.jpg" alt="Snoopy" class="snoopy-img" id="snoopy">
+    </div>
+
+    <script>
+        const snoopy = document.getElementById("snoopy");
+        snoopy.addEventListener("click", () => {
+            window.location.href = "final.html";
+        });
+    </script>
+</body>
+</html>
